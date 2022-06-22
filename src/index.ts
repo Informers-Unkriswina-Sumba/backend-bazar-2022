@@ -29,7 +29,7 @@ connectDB(() => {
 });
 
 // Set Public Folder
-app.use('/uploads/banner_ibadah', express.static('uploads/banner_ibadah'));
+app.use('/uploads/bukti_pemesanan', express.static('uploads/bukti_pemesanan'));
 
 // Morgan morgan
 app.use(

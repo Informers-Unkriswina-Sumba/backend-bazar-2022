@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <h1>Invoice</h1>
+    <h3>Dibuat pada: {{createdAt}}</h3>
+    <h3>Status: {{status}}</h3>
+    <h5>Nama Pembeli: {{namaPembeli}} | {{typePembeli}}</h5>
+    <h5>Metode Belanja: {{metodePembelian}}</h5>
+    <ul>
+      {{#each products}}
+      <li>Nama: {{this.name}}</li>
+      <li>Harga: {{this.harga}}</li>
+      <li>Jumlah Pembelian: {{this.qty}}</li>
+      <br />
+      {{/each}}
+    </ul>
+    <h3>Total Belanja: {{totalBelanja}}</h3>
+  </body>
+</html>
