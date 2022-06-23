@@ -5,12 +5,12 @@ import Invoice from '../../db/mongodb/models/invoice';
 
 const generateInvoice = async (
   payload: IRequestCreateInvoiceGuest,
-  req: Request | any,
   res: Response,
   next: NextFunction
 ) => {
   try {
     // const product = Pro (cari produk dulu yak harusnya)
+    const invoices = await Invoice.find();
     console.log('payload', payload);
     const newInvoice = await Invoice.create({
       guestId: payload.guestId,
@@ -18,11 +18,14 @@ const generateInvoice = async (
       typePembeli: payload.dataPembeli.type,
       metodePembelian: payload.metodePembelian,
       produk: payload.produk,
-      status: 'belumLunas',
+      invoiceNumber: invoices.length + 1,
+      lapak: payload.lapak,
+      status: 'Belum Lunas',
       createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
-    if (newInvoice) {
+    if (!newInvoice) {
       return res.status(400).send({
         success: false,
         data: null,

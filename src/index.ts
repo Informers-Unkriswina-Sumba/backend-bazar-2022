@@ -13,6 +13,10 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './db/mongodb/connection';
 import apiRouter from './routes';
+import { createPelapakSeeds } from './db/mongodb/seeds/pelapak';
+import { createLapakSeeds } from './db/mongodb/seeds/lapak';
+import { createProdukKelompok2Seeds } from './db/mongodb/seeds/lapak/kelompok2/produk';
+
 dotenv.config();
 
 // init express app
@@ -26,6 +30,9 @@ app.use(cookieParser());
 // Init MongoDB
 connectDB(() => {
   console.log('Successfully connected to database');
+  // createPelapakSeeds();
+  // createLapakSeeds();
+  // createProdukKelompok2Seeds();
 });
 
 // Set Public Folder

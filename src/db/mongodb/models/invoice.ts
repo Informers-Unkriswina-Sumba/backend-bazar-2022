@@ -15,9 +15,17 @@ const InvoiceSchema: Schema<InvoiceDocument> = new Schema({
     type: String,
     required: true,
   },
+  invoiceNumber: {
+    type: Number,
+    required: true,
+  },
   typePembeli: {
     type: String,
     required: true,
+  },
+  lapak: {
+    type: Schema.Types.ObjectId,
+    ref: 'Lapak',
   },
   metodePembelian: {
     type: String,

@@ -8,7 +8,7 @@ function createInvoice(invoice: any, path: any) {
   generateCustomerInformation(doc, invoice);
   generateInvoiceTable(doc, invoice);
   generateFooter(doc);
-
+  generateFooterUpdatedAt(doc, invoice);
   doc.end();
   doc.pipe(fs.createWriteStream(path));
 }
@@ -18,11 +18,13 @@ function generateHeader(doc: any) {
     .image('./logo.png', 50, 45, { width: 50 })
     .fillColor('#444444')
     .fontSize(20)
-    .text('ACME Inc.', 110, 57)
+    .text('enTECHprenuership.', 110, 57)
     .fontSize(10)
-    .text('ACME Inc.', 200, 50, { align: 'right' })
-    .text('123 Main Street', 200, 65, { align: 'right' })
-    .text('New York, NY, 10025', 200, 80, { align: 'right' })
+    .text('enTECHprenuership Unkriswina.', 200, 50, { align: 'right' })
+    .text('Jl. R. Suprapto No.35, Prailiu', 200, 65, { align: 'right' })
+    .text('Waingapu, Kabupaten Sumba Timur, Nusa Tenggara', 200, 80, {
+      align: 'right',
+    })
     .moveDown();
 }
 
@@ -32,32 +34,33 @@ function generateCustomerInformation(doc: any, invoice: any) {
   generateHr(doc, 185);
 
   const customerInformationTop = 200;
-
+  // , 300, customerInformationTop + 15)
   doc
     .fontSize(10)
-    .text('Invoice Number:', 50, customerInformationTop)
+    .text('Nomor Invoice:', 50, customerInformationTop)
     .font('Helvetica-Bold')
-    .text(invoice.invoice_nr, 150, customerInformationTop)
+    .text(invoice.invoiceNumber, 150, customerInformationTop)
+    .text('Status Invoice:', 50, customerInformationTop + 15)
+    .font('Helvetica-Bold')
+    .text(invoice.status, 150, customerInformationTop + 15)
+    .text('Metode Pembelian:', 50, customerInformationTop + 30)
+    .font('Helvetica-Bold')
+    .text(invoice.metodePembelian, 150, customerInformationTop + 30)
     .font('Helvetica')
-    .text('Invoice Date:', 50, customerInformationTop + 15)
-    .text(formatDate(new Date()), 150, customerInformationTop + 15)
-    .text('Balance Due:', 50, customerInformationTop + 30)
+    .text('Waktu dibuatkan:', 50, customerInformationTop + 60)
+    .text(formatDate(invoice.createdAt), 150, customerInformationTop + 60)
+    .text('Total Tagihan:', 50, customerInformationTop + 75)
     .text(
-      formatCurrency(invoice.subtotal - invoice.paid),
+      formatCurrency(invoice.totalPesanan),
       150,
-      customerInformationTop + 30
+      customerInformationTop + 75
     )
-
     .font('Helvetica-Bold')
-    .text(invoice.shipping.name, 300, customerInformationTop)
+    .text(invoice.pembeli.nama, 300, customerInformationTop)
     .font('Helvetica')
-    .text(invoice.shipping.address, 300, customerInformationTop + 15)
+    .text(invoice.pembeli.type, 300, customerInformationTop + 15)
     .text(
-      invoice.shipping.city +
-        ', ' +
-        invoice.shipping.state +
-        ', ' +
-        invoice.shipping.country,
+      'Waingapi, Nusa Tenggara Timur, Indonesia',
       300,
       customerInformationTop + 30
     )
@@ -75,10 +78,9 @@ function generateInvoiceTable(doc: any, invoice: any) {
     doc,
     invoiceTableTop,
     'Item',
-    'Description',
-    'Unit Cost',
-    'Quantity',
-    'Line Total'
+    'Harga Satuan',
+    'Jumlah',
+    'Total Harga'
   );
   generateHr(doc, invoiceTableTop + 20);
   doc.font('Helvetica');
@@ -90,10 +92,9 @@ function generateInvoiceTable(doc: any, invoice: any) {
       doc,
       position,
       item.item,
-      item.description,
-      formatCurrency(item.amount / item.quantity),
-      item.quantity,
-      formatCurrency(item.amount)
+      formatCurrency(item.amount),
+      item.qty,
+      formatCurrency(item.amount * item.qty)
     );
 
     generateHr(doc, position + 20);
@@ -104,22 +105,20 @@ function generateInvoiceTable(doc: any, invoice: any) {
     doc,
     subtotalPosition,
     '',
+    'Total Belanja',
     '',
-    'Subtotal',
-    '',
-    formatCurrency(invoice.subtotal)
+    formatCurrency(invoice.totalPesanan)
   );
 
   const paidToDatePosition = subtotalPosition + 20;
-  generateTableRow(
-    doc,
-    paidToDatePosition,
-    '',
-    '',
-    'Paid To Date',
-    '',
-    formatCurrency(invoice.paid)
-  );
+  // generateTableRow(
+  //   doc,
+  //   paidToDatePosition,
+  //   '',
+  //   'Paid To Date',
+  //   '',
+  //   formatCurrency(invoice.paid)
+  // );
 
   const duePosition = paidToDatePosition + 25;
   doc.font('Helvetica-Bold');
@@ -127,30 +126,36 @@ function generateInvoiceTable(doc: any, invoice: any) {
     doc,
     duePosition,
     '',
+    'Total Tagihan',
     '',
-    'Balance Due',
-    '',
-    formatCurrency(invoice.subtotal - invoice.paid)
+    formatCurrency(invoice.totalPesanan)
   );
   doc.font('Helvetica');
+}
+
+function generateFooterUpdatedAt(doc: any, invoice: any) {
+  doc
+    .fontSize(10)
+    .text(`Terakhir diupdate pada ${invoice.updatedAt}`, 50, 765, {
+      align: 'center',
+      width: 500,
+    });
 }
 
 function generateFooter(doc: any) {
   doc
     .fontSize(10)
     .text(
-      'Payment is due within 15 days. Thank you for your business.',
+      `Invoice ini sah dan diproses oleh komputer. silakan hub nomor dibawah ini jika butuh bantuan: 082217971133`,
       50,
-      780,
+      750,
       { align: 'center', width: 500 }
     );
 }
-
 function generateTableRow(
   doc: any,
   y: any,
   item: any,
-  description: any,
   unitCost: any,
   quantity: any,
   lineTotal: any
@@ -158,7 +163,6 @@ function generateTableRow(
   doc
     .fontSize(10)
     .text(item, 50, y)
-    .text(description, 150, y)
     .text(unitCost, 280, y, { width: 90, align: 'right' })
     .text(quantity, 370, y, { width: 90, align: 'right' })
     .text(lineTotal, 0, y, { align: 'right' });
@@ -169,7 +173,7 @@ function generateHr(doc: any, y: any) {
 }
 
 function formatCurrency(cents: any) {
-  return '$' + (cents / 100).toFixed(2);
+  return 'Rp. ' + cents;
 }
 
 function formatDate(date: any) {

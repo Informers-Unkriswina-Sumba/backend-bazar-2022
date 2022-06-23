@@ -1,26 +1,26 @@
 import { Schema, model, Model } from 'mongoose';
 import bcrypt from 'bcrypt';
-import { IUser } from '../interface/IUser';
-import { ROUNDED_SALT_BCRYPT } from '../config';
+import { IPelapak } from '../../../interface/IPelapak';
+import { ROUNDED_SALT_BCRYPT } from '../../../config';
 
 /**
  * Not directly exported because it is not recommanded to
  * use this interface direct unless necessary since the
  * type of `company` field is not deterministic
  */
-export type UserDocument = Document & IUser;
-
-// For model
-interface IUserModel extends Model<UserDocument> {
-  findByUsername: (username: string) => Promise<UserDocument>;
-  findByEmail: (email: string) => Promise<UserDocument>;
-}
+export type PelapakDocument = Document & IPelapak;
 
 // Create a Schema corresponding to the document interface.
-const UserSchema: Schema<UserDocument> = new Schema({
-  name: {
+const PelapakSchema: Schema<PelapakDocument> = new Schema({
+  nama: {
     type: String,
     required: true,
+  },
+  lapak: {
+    // type: String,
+    // required: true,
+    type: Schema.Types.ObjectId,
+    ref: 'Lapak',
   },
   email: {
     type: String,
@@ -34,22 +34,21 @@ const UserSchema: Schema<UserDocument> = new Schema({
   password: {
     type: String,
   },
-  created_at: {
+  createdAt: {
     type: Date,
-    default: new Date(),
   },
-  deleted_at: {
+  deletedAt: {
     type: Date,
     default: null,
   },
-  updated_at: {
+  updatedAt: {
     type: Date,
     default: null,
   },
 });
 
 // Document middlewares
-// UserSchema.pre('save', async function (this: UserDocument, next) {
+// PelapakSchema.pre('save', async function (this: PelapakDocument, next) {
 //   console.log('this.password', this.password);
 //   const hash = await bcrypt.hash(this.password, ROUNDED_SALT_BCRYPT);
 //   this.password = hash;
@@ -57,8 +56,8 @@ const UserSchema: Schema<UserDocument> = new Schema({
 // });
 
 // Methods
-UserSchema.methods.isValidPassword = async function (
-  this: UserDocument,
+PelapakSchema.methods.isValidPassword = async function (
+  this: PelapakDocument,
   password: string
 ): Promise<boolean> {
   const compare = await bcrypt.compare(password, this.password);
@@ -66,12 +65,12 @@ UserSchema.methods.isValidPassword = async function (
 };
 
 // Hide password field
-UserSchema.set('toJSON', {
+PelapakSchema.set('toJSON', {
   transform: function (doc, ret, opt) {
     delete ret['password'];
     return ret;
   },
 });
 
-const User = model<UserDocument, IUserModel>('User', UserSchema);
-export default User;
+const Pelapak = model<PelapakDocument>('Pelapak', PelapakSchema);
+export default Pelapak;

@@ -1,28 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import createInvoice from '../../helpers/createInvoice';
 import Invoice from '../../db/mongodb/models/invoice';
-//Required package
-// import pdf from 'pdf-creator-node';
+import Product from '../../db/mongodb/models/product';
+import Lapak from '../../db/mongodb/models/lapak';
 
-// const options = {
-//   format: 'A3',
-//   orientation: 'portrait',
-//   border: '10mm',
-//   header: {
-//     height: '45mm',
-//     contents: '<div style="text-align: center;">Author: Shyam Hajare</div>',
-//   },
-//   footer: {
-//     height: '28mm',
-//     contents: {
-//       first: 'Cover page',
-//       2: 'Second page', // Any page number is working. 1-based index
-//       default:
-//         '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
-//       last: 'Last Page',
-//     },
-//   },
-// };
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const printInvoice = async (
   invoiceId: string,
@@ -31,96 +13,57 @@ const printInvoice = async (
   next: NextFunction
 ) => {
   try {
-    // const invoiceOld = await Invoice.findById(invoiceId);
-    // Read HTML Template
-    // const invoiceHTMLTemplate = fs.readFileSync(
-    //   './template-invoiceOld.html',
-    //   'utf8'
-    // );
+    const invoice = await Invoice.findById(invoiceId); // harusnya populate lapak & produk
+    const lapak = await Lapak.findById(invoice.lapak);
+    console.log('invoice', invoice);
+    if (!invoice) {
+      return res.status(400).send({
+        success: false,
+        data: null,
+        message: 'Invoice not found',
+      });
+    }
 
-    // if (!invoiceOld) {
-    //   return res.status(400).send({
-    //     success: false,
-    //     data: null,
-    //     message: 'Invoice not found',
-    //   });
-    // }
+    let dataItems: any[] = [];
+    let totalPesanan = 0;
 
-    const products = [
-      {
-        name: 'Manggulu',
-        harga: 15000,
-        qty: 1,
+    for (const item of invoice.produk) {
+      const product = await Product.findById(item.id);
+      dataItems.push({
+        item: product.nama,
+        qty: item.qty,
+        amount: product.harga,
+      });
+      totalPesanan += product.harga * item.qty;
+    }
+
+    const invoiceData = {
+      pembeli: {
+        nama: invoice.namaPembeli,
+        type: invoice.typePembeli,
       },
-      {
-        name: 'Manggulu',
-        harga: 15000,
-        qty: 2,
-      },
-    ];
-
-    // const document = {
-    //   html: invoiceHTMLTemplate,
-    //   data: {
-    //     products: products,
-    //     createdAt: new Date(),
-    //     status: 'Lunas',
-    //     namaPembeli: 'Rendy',
-    //     typePembeli: 'Mahasiswa',
-    //     metodePembelian: 'COD',
-    //   },
-    //   path: `${Date.toString()}-invoice.pdf`,
-    //   type: '',
-    // };
-
-    // pdf
-    //   .create(document, options)
-    //   .then((res: any) => {
-    //     console.log(res);
-    //   })
-    //   .catch((error: any) => {
-    //     console.log('error', error);
-    //     next(error);
-    //   });
-
-    const invoice = {
-      shipping: {
-        name: 'John Doe',
-        address: '1234 Main Street',
-        city: 'San Francisco',
-        state: 'CA',
-        country: 'US',
-        postal_code: 94111,
-      },
-      items: [
-        {
-          item: 'TC 100',
-          description: 'Toner Cartridge',
-          quantity: 2,
-          amount: 6000,
-        },
-        {
-          item: 'USB_EXT',
-          description: 'USB Cable Extender',
-          quantity: 1,
-          amount: 2000,
-        },
-      ],
-      subtotal: 8000,
-      paid: 0,
-      invoice_nr: 1234,
+      metodePembelian: invoice.metodePembelian,
+      status: invoice.status,
+      createdAt: invoice.createdAt,
+      updatedAt: invoice.updatedAt,
+      items: dataItems,
+      totalPesanan: totalPesanan,
+      invoiceNumber: invoice.invoiceNumber,
+      namaLapak: lapak.namaLapak,
     };
 
-    createInvoice(
-      invoice,
-      `files/invoices/${new Date().getTime().toString()}-invoice.pdf`
-    );
+    const invoicePath = `files/invoices/${new Date()
+      .getTime()
+      .toString()}-invoice.pdf`;
+    createInvoice(invoiceData, invoicePath);
+    await delay(5000);
 
-    return res.send({
-      success: true,
-      data: null,
-      message: 'Success print invoice',
-    });
+    return res.download(invoicePath); // Set disposition and send it.
+    // return res.send({
+    //   success: true,
+    //   data: null,
+    //   message: 'Success print invoice',
+    // });
   } catch (err) {
     console.log('err', err);
     next(err);

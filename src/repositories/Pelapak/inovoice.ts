@@ -1,10 +1,28 @@
 import { NextFunction, Request, Response } from 'express';
 import Invoice from '../../db/mongodb/models/invoice';
 
+const getInvoiceByLapakId = async (
+  lapakId: string,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const invoices = await Invoice.find({ lapak: lapakId });
+
+    return res.send({
+      success: true,
+      data: invoices,
+      message: 'Success get invoice',
+    });
+  } catch (err) {
+    console.log('err', err);
+    next(err);
+  }
+};
+
 const updateStatusInvoice = async (
   invoiceId: string,
   status: string,
-  req: Request | any,
   res: Response,
   next: NextFunction
 ) => {
@@ -38,4 +56,4 @@ const updateStatusInvoice = async (
   }
 };
 
-export default { updateStatusInvoice };
+export default { updateStatusInvoice, getInvoiceByLapakId };

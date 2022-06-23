@@ -7,6 +7,7 @@ export interface IRequestCreateInvoiceGuest {
     type: string;
   };
   metodePembelian: string;
+  lapak: any;
   produk: {
     id: any;
     qty: number;
@@ -23,7 +24,9 @@ export interface IInvoice {
     id: any;
     qty: number;
   }[];
-  status: String;
+  status: string;
+  invoiceNumber: number;
+  lapak: any;
   createdAt: Date;
   deletedAt: Date | null;
   updatedAt: Date | null;

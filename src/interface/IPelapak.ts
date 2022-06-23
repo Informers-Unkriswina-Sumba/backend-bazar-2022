@@ -1,13 +1,14 @@
 import { Types } from 'mongoose';
 
-export interface IUser {
+export interface IPelapak {
   _id: Types.ObjectId | Record<string, unknown>;
-  name: string;
+  nama: string;
+  lapak: Types.ObjectId | Record<string, unknown>;
   email: string;
   password: string | null;
   token: string | null;
-  created_at: Date;
-  deleted_at: Date | null;
-  updated_at: Date | null;
+  createdAt: Date;
+  deletedAt: Date | null;
+  updatedAt: Date | null;
   isValidPassword: (password: string) => Promise<boolean>;
 }
