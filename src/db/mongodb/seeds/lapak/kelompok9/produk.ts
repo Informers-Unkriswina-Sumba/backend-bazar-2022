@@ -1,9 +1,9 @@
 import Produk from '../../../models/product';
 
-export const createProdukKelompok1Seeds = async () => {
+export const createProdukKelompok10Seeds = async () => {
   // const hashPass: any = await hashingPassword(payload.password);
   // payload.password = hashPass;
-  const lapakId = '62b53fed27ea5275f8cfb3b9';
+  const lapakId = '62b53fec27ea5275f8cfb3ab';
 
   const produkData: any[] = [
     // {
@@ -23,5 +23,5 @@ export const createProdukKelompok1Seeds = async () => {
   for (const produk of produkData) {
     await Produk.create(produk);
   }
-  console.log('successfully running produk kelompok 1 seeds');
+  console.log('successfully running produk kelompok 10 seeds');
 };

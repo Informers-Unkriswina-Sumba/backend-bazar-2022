@@ -31,7 +31,7 @@ app.use(cookieParser());
 connectDB(() => {
   console.log('Successfully connected to database');
   // createPelapakSeeds();
-  createLapakSeeds();
+  // createLapakSeeds();
   // createProdukKelompok2Seeds();
 });
 
