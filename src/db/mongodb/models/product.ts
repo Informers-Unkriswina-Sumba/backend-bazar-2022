@@ -19,6 +19,7 @@ const ProdukSchema: Schema<ProdukDocument> = new Schema({
   createdAt: { type: Date },
   updatedAt: { type: Date },
   deletedAt: { type: Date },
+  type: { type: String },
 });
 
 const Product = model<ProdukDocument>('Product', ProdukSchema);

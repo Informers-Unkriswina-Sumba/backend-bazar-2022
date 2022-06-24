@@ -13,4 +13,5 @@ export interface IProduk {
   createdAt: Date;
   updatedAt: Date | null;
   deletedAt: Date | null;
+  type: string;
 }

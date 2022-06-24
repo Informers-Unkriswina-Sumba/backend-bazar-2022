@@ -36,7 +36,7 @@ connectDB(() => {
 });
 
 // Set Public Folder
-app.use('/uploads/bukti_pemesanan', express.static('uploads/bukti_pemesanan'));
+app.use('/uploads', express.static('uploads'));
 
 // Morgan morgan
 app.use(
