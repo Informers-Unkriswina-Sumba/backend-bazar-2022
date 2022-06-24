@@ -30,4 +30,21 @@ const getListLapak = async (
   }
 };
 
-export default { getLapakBySlugName, getListLapak };
+const getLapakById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    await LapakSharedRepository.getLapakById(
+      req.params.lapakId,
+      req,
+      res,
+      next
+    );
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { getLapakBySlugName, getListLapak, getLapakById };

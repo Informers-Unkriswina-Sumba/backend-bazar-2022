@@ -11,4 +11,9 @@ lapakRouter.get(
 
 lapakRouter.get('/list', asyncErrorHandler(LapakSharedController.getListLapak));
 
+lapakRouter.get(
+  '/lapak-id/:lapakId',
+  asyncErrorHandler(LapakSharedController.getLapakById)
+);
+
 export default lapakRouter;

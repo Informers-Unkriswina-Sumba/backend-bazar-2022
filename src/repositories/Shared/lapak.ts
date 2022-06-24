@@ -13,7 +13,7 @@ const getLapakBySlugName = async (
       return res.status(400).send({
         success: false,
         data: null,
-        message: 'Invoice not found',
+        message: 'Lapak not found',
       });
     }
 
@@ -43,4 +43,30 @@ const getListLapak = async (res: Response, next: NextFunction) => {
   }
 };
 
-export default { getLapakBySlugName, getListLapak };
+const getLapakById = async (
+  id: string,
+  req: Request | any,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    let lapak = await Lapak.findById(id);
+    if (!lapak) {
+      return res.status(400).send({
+        success: false,
+        data: null,
+        message: 'Lapak not found',
+      });
+    }
+
+    return res.send({
+      success: true,
+      data: lapak,
+      message: 'Success get lapak',
+    });
+  } catch (err) {
+    console.log('err', err);
+    next(err);
+  }
+};
+export default { getLapakBySlugName, getListLapak, getLapakById };
