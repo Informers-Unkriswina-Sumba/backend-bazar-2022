@@ -13,9 +13,18 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './db/mongodb/connection';
 import apiRouter from './routes';
-import { createPelapakSeeds } from './db/mongodb/seeds/pelapak';
-import { createLapakSeeds } from './db/mongodb/seeds/lapak';
-import { createProdukKelompok2Seeds } from './db/mongodb/seeds/lapak/kelompok2/produk';
+// import { createPelapakSeeds } from './db/mongodb/seeds/pelapak';
+// import { createLapakSeeds } from './db/mongodb/seeds/lapak';
+// import { createProdukKelompok2Seeds } from './db/mongodb/seeds/lapak/kelompok2/produk';
+// import { createProdukKelompok3Seeds } from './db/mongodb/seeds/lapak/kelompok3/produk';
+// import { createProdukKelompok1Seeds } from './db/mongodb/seeds/lapak/kelompok1/produk';
+// import { createProdukKelompok4Seeds } from './db/mongodb/seeds/lapak/kelompok4/produk';
+// import { createProdukKelompok8Seeds } from './db/mongodb/seeds/lapak/kelompok8/produk';
+// import { createProdukKelompok10Seeds } from './db/mongodb/seeds/lapak/kelompok10/produk';
+// import { createProdukKelompok6Seeds } from './db/mongodb/seeds/lapak/kelompok6/produk';
+// import { createProdukKelompok5Seeds } from './db/mongodb/seeds/lapak/kelompok5/produk';
+// import { createProdukKelompok7Seeds } from './db/mongodb/seeds/lapak/kelompok7/produk';
+// import { createProdukKelompok9Seeds } from './db/mongodb/seeds/lapak/kelompok9/produk';
 
 dotenv.config();
 
@@ -32,7 +41,16 @@ connectDB(() => {
   console.log('Successfully connected to database');
   // createPelapakSeeds();
   // createLapakSeeds();
+  // createProdukKelompok1Seeds();
   // createProdukKelompok2Seeds();
+  // createProdukKelompok3Seeds();
+  // createProdukKelompok4Seeds();
+  // createProdukKelompok8Seeds();
+  // createProdukKelompok10Seeds();
+  // createProdukKelompok6Seeds();
+  // createProdukKelompok5Seeds();
+  // createProdukKelompok7Seeds();
+  // createProdukKelompok9Seeds();
 });
 
 // Set Public Folder

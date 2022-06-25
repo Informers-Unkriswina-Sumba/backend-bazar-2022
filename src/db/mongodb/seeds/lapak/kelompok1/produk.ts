@@ -7,69 +7,40 @@ export const createProdukKelompok1Seeds = async () => {
 
   const produkData: any[] = [
     {
-      gambar: [
-        'https://images.unsplash.com/photo-1654779973435-0fae35b3d0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      ],
-      nama: '',
+      gambar: ['https://backend.unwinapreneur.com/uploads/kelompok-1.jpg'],
+      nama: 'Lumpia',
       minimalPembelian: 0,
       harga: 0,
       satuan: '',
-      deskripsi: '',
+      deskripsi: ``,
       lapak: lapakId,
       isSuspended: false,
       createdAt: new Date(),
+      type: 'barang', // barang | jasa
     },
     {
-      gambar: [
-        'https://images.unsplash.com/photo-1654779973435-0fae35b3d0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      ],
-      nama: '',
+      gambar: ['https://backend.unwinapreneur.com/uploads/kelompok-1.jpg'],
+      nama: 'Es kelapa',
       minimalPembelian: 0,
       harga: 0,
       satuan: '',
-      deskripsi: '',
+      deskripsi: ``,
       lapak: lapakId,
       isSuspended: false,
       createdAt: new Date(),
+      type: 'barang', // barang | jasa
     },
     {
-      gambar: [
-        'https://images.unsplash.com/photo-1654779973435-0fae35b3d0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      ],
-      nama: '',
+      gambar: ['https://backend.unwinapreneur.com/uploads/kelompok-1.jpg'],
+      nama: 'Kopi',
       minimalPembelian: 0,
       harga: 0,
       satuan: '',
-      deskripsi: '',
+      deskripsi: ``,
       lapak: lapakId,
       isSuspended: false,
       createdAt: new Date(),
-    },
-    {
-      gambar: [
-        'https://images.unsplash.com/photo-1654779973435-0fae35b3d0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      ],
-      nama: '',
-      minimalPembelian: 0,
-      harga: 0,
-      satuan: '',
-      deskripsi: '',
-      lapak: lapakId,
-      isSuspended: false,
-      createdAt: new Date(),
-    },
-    {
-      gambar: [
-        'https://images.unsplash.com/photo-1654779973435-0fae35b3d0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-      ],
-      nama: '',
-      minimalPembelian: 0,
-      harga: 0,
-      satuan: '',
-      deskripsi: '',
-      lapak: lapakId,
-      isSuspended: false,
-      createdAt: new Date(),
+      type: 'barang', // barang | jasa
     },
   ];
   for (const produk of produkData) {

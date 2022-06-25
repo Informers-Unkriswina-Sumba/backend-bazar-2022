@@ -132,41 +132,39 @@ const printInvoice = async (
 
 export default { printInvoice };
 
-
-
 KELOMPOK 1:  
-all produk => https://unwinapreneur.com/uploads/kelompok-1.jpg
+all produk => https://backend.unwinapreneur.com/uploads/kelompok-1.jpg
 
 KELOMPOK 2:  
-Ayam rica-rica 1 => https://unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png
-Ayam rica-rica 2 => https://unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png
-Salad buah 1 => https://unwinapreneur.com/uploads/kelompok-2-salad-buah-1.png
-Salad buah 2 => https://unwinapreneur.com/uploads/kelompok-2-salad-buah-2.png
+Ayam rica-rica 1 => https://backend.unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png
+Ayam rica-rica 2 => https://backend.unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png
+Salad buah 1 => https://backend.unwinapreneur.com/uploads/kelompok-2-salad-buah-1.png
+Salad buah 2 => https://backend.unwinapreneur.com/uploads/kelompok-2-salad-buah-2.png
 
 KELOMPOK 3:  
-Klepon => https://unwinapreneur.com/uploads/kelompok-3-klepon.jpg
-Popcord tahu => https://unwinapreneur.com/uploads/kelompok-3-popcorn-tahu.jpg
+Klepon => https://backend.unwinapreneur.com/uploads/kelompok-3-klepon.jpg
+Popcord tahu => https://backend.unwinapreneur.com/uploads/kelompok-3-popcorn-tahu.jpg
 
 KELOMPOK 4:  
-sosis telur => https://unwinapreneur.com/uploads/kelompok-4-sosis-telur.jpg 
-sosis mie => https://unwinapreneur.com/uploads/kelompok-4-sosis-mie.jpg
-sosis sambal => https://unwinapreneur.com/uploads/kelompok-4-sambal-cumi.jpg
-sosis manggulu => https://unwinapreneur.com/uploads/kelompok-4-manggulu.jpg
-cumi oreng => https://unwinapreneur.com/uploads/kelompok-4-cumi-goreng.jpg
+sosis telur => https://backend.unwinapreneur.com/uploads/kelompok-4-sosis-telur.jpg 
+sosis mie => https://backend.unwinapreneur.com/uploads/kelompok-4-sosis-mie.jpg
+sosis sambal => https://backend.unwinapreneur.com/uploads/kelompok-4-sambal-cumi.jpg
+sosis manggulu => https://backend.unwinapreneur.com/uploads/kelompok-4-manggulu.jpg
+cumi oreng => https://backend.unwinapreneur.com/uploads/kelompok-4-cumi-goreng.jpg
 
 KELOMPOK 5:
 - 
 
 KELOMPOK 6:
-kaparak => https://unwinapreneur.com/uploads/kelompok-6-kaparak.png
-es buah => https://unwinapreneur.com/uploads/kelompok-6-jus-buah
-jagung => https://unwinapreneur.com/uploads/kelompok-6-jagung
-es lilin => https://unwinapreneur.com/uploads/kelompok-6-es-lilin.png
+kaparak => https://backend.unwinapreneur.com/uploads/kelompok-6-kaparak.png
+es buah => https://backend.unwinapreneur.com/uploads/kelompok-6-jus-buah
+jagung => https://backend.unwinapreneur.com/uploads/kelompok-6-jagung
+es lilin => https://backend.unwinapreneur.com/uploads/kelompok-6-es-lilin.png
 
 KELOMPOK 7:
-lemet ubi => https://unwinapreneur.com/uploads/kelompok-7-lemet-ubi.jpeg
-kripik sukun => https://unwinapreneur.com/uploads/kelompok-7-keripik-sukun.jpg
-es jeruk => https://unwinapreneur.com/uploads/kelompok-7-esjeruk.jpeg
+lemet ubi => https://backend.unwinapreneur.com/uploads/kelompok-7-lemet-ubi.jpeg
+kripik sukun => https://backend.unwinapreneur.com/uploads/kelompok-7-keripik-sukun.jpg
+es jeruk => https://backend.unwinapreneur.com/uploads/kelompok-7-esjeruk.jpeg
 
 KELOMPOK 8:
 - 

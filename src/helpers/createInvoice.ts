@@ -18,11 +18,12 @@ function generateHeader(doc: any) {
     .image('./logo.png', 50, 45, { width: 50 })
     .fillColor('#444444')
     .fontSize(20)
-    .text('enTECHprenuership.', 110, 57)
+    .text('enTECHprenuership', 110, 57)
     .fontSize(10)
-    .text('enTECHprenuership Unkriswina.', 200, 50, { align: 'right' })
-    .text('Jl. R. Suprapto No.35, Prailiu', 200, 65, { align: 'right' })
-    .text('Waingapu, Kabupaten Sumba Timur, Nusa Tenggara', 200, 80, {
+    .text('Universitas Kristen Wira Wacana Sumba.', 200, 65, { align: 'right' })
+    .text('Fakultas sains dan teknologi', 200, 75, { align: 'right' })
+    .text('Jl. R. Suprapto No.35, Prailiu', 200, 85, { align: 'right' })
+    .text('Waingapu, Kabupaten Sumba Timur, Nusa Tenggara Timur', 200, 100, {
       align: 'right',
     })
     .moveDown();
@@ -60,7 +61,7 @@ function generateCustomerInformation(doc: any, invoice: any) {
     .font('Helvetica')
     .text(invoice.pembeli.type, 300, customerInformationTop + 15)
     .text(
-      'Waingapi, Nusa Tenggara Timur, Indonesia',
+      'Waingapu, Nusa Tenggara Timur, Indonesia',
       300,
       customerInformationTop + 30
     )

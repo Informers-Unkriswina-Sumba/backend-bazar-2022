@@ -15,7 +15,7 @@ const connectDB = (cb: Function) => {
   };
 
   // ('mongodb://adminrootdb:shoutoutidsukukata123321@159.223.65.0:27017/sqlgenie?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false');
-  // const MONGO_URI = `mongodb://${mongoCred.user}:${mongoCred.password}@${mongoCred.host}:${mongoCred.port}/${mongoCred.name}`;
+  // const MONGO_URI = `mongodb://localhost:27017/bazartechnopreneurship`;
 
   const MONGO_URI =
     'mongodb://adminrootdb:shoutoutidsukukata123321@159.223.65.0:27017/bazartechnopreneurship?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false';

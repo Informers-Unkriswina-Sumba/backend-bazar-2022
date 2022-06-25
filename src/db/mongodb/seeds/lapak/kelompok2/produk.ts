@@ -8,8 +8,8 @@ export const createProdukKelompok2Seeds = async () => {
   const produkData: any[] = [
     {
       gambar: [
-        'https://unwinapreneur.com/uploads/kelompok-2-salad-buah-1.png',
-        'https://unwinapreneur.com/uploads/kelompok-2-salad-buah-2.png',
+        'https://backend.unwinapreneur.com/uploads/kelompok-2-salad-buah-1.png',
+        'https://backend.unwinapreneur.com/uploads/kelompok-2-salad-buah-2.png',
       ],
       nama: 'Salad buah',
       minimalPembelian: 0,
@@ -40,8 +40,8 @@ export const createProdukKelompok2Seeds = async () => {
     },
     {
       gambar: [
-        'https://unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png',
-        'https://unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png',
+        'https://backend.unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png',
+        'https://backend.unwinapreneur.com/uploads/kelompok-2-ayam-rica-1.png',
       ],
       nama: 'Ayam Rica-rica',
       minimalPembelian: 0,
