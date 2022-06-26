@@ -4,7 +4,7 @@ export const createPelapakSeeds = async () => {
   // const hashPass: any = await hashingPassword(payload.password);
   // payload.password = hashPass;
 
-  const pelapakData = [
+  const pelapakData: any[] = [
     // KELOMPOK 1
     // {
     //   nama: 'Aner Rada Ndima',
