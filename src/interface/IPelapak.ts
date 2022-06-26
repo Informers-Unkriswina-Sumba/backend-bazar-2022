@@ -7,6 +7,7 @@ export interface IPelapak {
   email: string;
   password: string | null;
   token: string | null;
+  noTelfon: string;
   createdAt: Date;
   deletedAt: Date | null;
   updatedAt: Date | null;

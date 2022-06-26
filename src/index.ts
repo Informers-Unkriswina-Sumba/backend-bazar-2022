@@ -13,7 +13,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './db/mongodb/connection';
 import apiRouter from './routes';
-// import { createPelapakSeeds } from './db/mongodb/seeds/pelapak';
+import { createPelapakSeeds } from './db/mongodb/seeds/pelapak';
 // import { createLapakSeeds } from './db/mongodb/seeds/lapak';
 // import { createProdukKelompok2Seeds } from './db/mongodb/seeds/lapak/kelompok2/produk';
 // import { createProdukKelompok3Seeds } from './db/mongodb/seeds/lapak/kelompok3/produk';

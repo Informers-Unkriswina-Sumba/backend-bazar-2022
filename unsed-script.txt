@@ -174,3 +174,16 @@ KELOMPOK 9:
 
 KELOMPOK 10:
 -
+
+AKUN PELAPAK
+
+KELOMPOK 1
+email: umbuadymutu@gmail.com
+password: 0m89rd
+link login: https://unwinapreneur.com/login-pelapak
+
+KELOMPOK 2
+email: joshtamuumbu@gmail.com
+password: WFnjEZ
+link login: https://unwinapreneur.com/login-pelapak
+

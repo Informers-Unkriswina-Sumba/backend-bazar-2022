@@ -27,6 +27,9 @@ const PelapakSchema: Schema<PelapakDocument> = new Schema({
     required: true,
     unique: true,
   },
+  noTelfon: {
+    type: String,
+  },
   token: {
     type: String,
     default: null,

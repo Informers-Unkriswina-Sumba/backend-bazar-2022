@@ -53,7 +53,7 @@ const findAll = async (
   try {
     // const product = Pro (cari produk dulu yak harusnya)
     const keranjang = await Keranjang.find({
-      idGuest: idGuest,
+      guestId: idGuest,
     });
 
     return res.send({
