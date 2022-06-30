@@ -14,6 +14,7 @@ import cookieParser from 'cookie-parser';
 import connectDB from './db/mongodb/connection';
 import apiRouter from './routes';
 import { createPelapakSeeds } from './db/mongodb/seeds/pelapak';
+import { sendAllPelapakCredentialAccount } from './services/mailSender';
 // import { createLapakSeeds } from './db/mongodb/seeds/lapak';
 // import { createProdukKelompok2Seeds } from './db/mongodb/seeds/lapak/kelompok2/produk';
 // import { createProdukKelompok3Seeds } from './db/mongodb/seeds/lapak/kelompok3/produk';
@@ -39,6 +40,7 @@ app.use(cookieParser());
 // Init MongoDB
 connectDB(() => {
   console.log('Successfully connected to database');
+  // sendAllPelapakCredentialAccount();
   // createPelapakSeeds();
   // createLapakSeeds();
   // createProdukKelompok1Seeds();

@@ -1,0 +1,1 @@
+{"version":3,"file":"invoice.js","sourceRoot":"","sources":["../../../../src/routes/v1/Shared/invoice.ts"],"names":[],"mappings":";;;;;AAAA,sDAA8B;AAC9B,oDAAwD;AACxD,mFAA0E;AAE1E,MAAM,aAAa,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAEvC,aAAa,CAAC,GAAG,CACf,mBAAmB,EACnB,IAAA,8BAAiB,EAAC,kBAAuB,CAAC,YAAY,CAAC,CACxD,CAAC;AAEF,kBAAe,aAAa,CAAC"}
