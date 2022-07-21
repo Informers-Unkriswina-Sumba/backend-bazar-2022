@@ -15,10 +15,11 @@ const connectDB = (cb: Function) => {
   };
 
   // ('mongodb://adminrootdb:shoutoutidsukukata123321@159.223.65.0:27017/sqlgenie?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false');
-  // const MONGO_URI = `mongodb://localhost:27017/bazartechnopreneurship`;
+  // const MONGO_URI = `mongodb://localhost:27017/bazartechnopreneurship`
+  // 'mongodb://adminrootdb:shoutoutidsukukata123321@159.223.65.0:27017/bazartechnopreneurship?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false';
 
   const MONGO_URI =
-    'mongodb://adminrootdb:shoutoutidsukukata123321@159.223.65.0:27017/bazartechnopreneurship?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false';
+    'mongodb+srv://sqlgeniegaspol:2njYQrQYJ4IuAT6i@cluster0.mqiqe.mongodb.net/bazartechnopreneurship?authSource=admin&replicaSet=atlas-13irqk-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true';
 
   connect(MONGO_URI, options)
     .then(() => {

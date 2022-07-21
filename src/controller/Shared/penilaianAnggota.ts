@@ -34,4 +34,20 @@ const getPenilaianAnggotaByNimAndGuest = async (
     next(err);
   }
 };
-export default { createPenilaianAnggota, getPenilaianAnggotaByNimAndGuest };
+
+const getListPenilaian = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    await SharedPenilaianAnggotaRepository.getListPenilaian(res, next);
+  } catch (err) {
+    next(err);
+  }
+};
+export default {
+  createPenilaianAnggota,
+  getPenilaianAnggotaByNimAndGuest,
+  getListPenilaian,
+};

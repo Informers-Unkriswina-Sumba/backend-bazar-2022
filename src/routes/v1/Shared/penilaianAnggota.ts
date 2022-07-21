@@ -16,4 +16,9 @@ penilaianAnggotaRouter.get(
   )
 );
 
+penilaianAnggotaRouter.get(
+  '/list',
+  asyncErrorHandler(PenilaianAnggotaSharedController.getListPenilaian)
+);
+
 export default penilaianAnggotaRouter;

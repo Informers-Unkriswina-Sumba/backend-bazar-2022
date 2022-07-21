@@ -72,4 +72,54 @@ const getPenilaianAnggotaByGuestAndNim = async (
   }
 };
 
-export default { createPenilaianAnggota, getPenilaianAnggotaByGuestAndNim };
+const getListPenilaian = async (res: Response, next: NextFunction) => {
+  try {
+    // const penilaian = await PenilaianAnggota.find().select(
+    //   '_id nim description createdAt'
+    // );
+
+    let mahasiswa = await PenilaianAnggota.aggregate([
+      {
+        $group: {
+          _id: { source: '$nim', status: '$status' },
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { count: -1 } },
+    ]);
+
+    let data: any[] = [];
+    for (const mhs of mahasiswa) {
+      const info = await PenilaianAnggota.find({ nim: mhs._id.source }).select(
+        '_id nim description createdAt'
+      );
+      data.push({
+        totalRating: mhs.count,
+        dataRating: info,
+      });
+    }
+
+    if (!data) {
+      return res.status(400).send({
+        success: false,
+        data: null,
+        message: 'Gagal mendapatkan penilaian anggota',
+      });
+    }
+
+    return res.send({
+      success: true,
+      data: data,
+      message: 'Success get list penilaian anggota',
+    });
+  } catch (err) {
+    console.log('err', err);
+    next(err);
+  }
+};
+
+export default {
+  createPenilaianAnggota,
+  getPenilaianAnggotaByGuestAndNim,
+  getListPenilaian,
+};
